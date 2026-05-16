@@ -8,22 +8,20 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/send", async (req, res) => {
-
     const { name, email, message } = req.body;
 
     try {
-
         let transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "arnab10953@gmail.com",
-                pass: "ydvb uudx zqpn zbno"
+                user: process.env.arnab10953@gmail.com,
+                pass: process.env.ydvb uudx zqpn zbno
             }
         });
 
         await transporter.sendMail({
             from: email,
-            to: "arnab10953@gmail.com",
+            to: process.env.EMAIL_USER,
             subject: "New Contact Message",
             html: `
                 <h2>New Message</h2>
@@ -39,16 +37,15 @@ app.post("/send", async (req, res) => {
         });
 
     } catch (err) {
-
         res.json({
             success: false,
             error: err.message
         });
-
     }
-
 });
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
