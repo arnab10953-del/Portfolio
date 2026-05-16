@@ -6,8 +6,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "cors": "^2.8.6",
     "express": "^4.22.2",
+    "cors": "^2.8.6",
     "nodemailer": "^8.0.7"
   }
 }
